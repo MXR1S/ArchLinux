@@ -613,4 +613,4 @@ WINE_FULLSCREEN_FSR=1   mangohud gamemoderun DXVK_ASYNC=1 WINE_FULLSCREEN_FSR_ST
 ![4](https://sun9-51.userapi.com/impf/wHFhIprNgeGFIydSvYLssGtmgQ7NQkNZe-b2yA/Lc9AMkvkvYI.jpg?size=597x57&quality=96&sign=1520fffe025f94e31943bad9a1c061da&type=album)
 
 ![5](https://sun9-80.userapi.com/impf/OJDUy6rheQDyovHq958-ajjHKluC9PBuOqJE0w/Yw1E5diRkQ4.jpg?size=988x200&quality=96&sign=3336f4363e25b81b9d2fcea172f8dcaf&type=album)
-# На этом базовую настройку и конфигурирование ArchLinux системы можно считать оконченной. Система может запускать любые игры и приложения, а вы ознокомились со всем темb базами, что вам помогут в дальнейшей эксплуатации системы.
+# На этом базовую настройку и конфигурирование ArchLinux системы можно считать оконченной. Система может запускать любые игры и приложения, а вы ознокомились со всем теми базами, что вам помогут в дальнейшей эксплуатации системы.
