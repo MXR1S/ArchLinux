@@ -148,7 +148,7 @@ WantedBy=multi-user.target
 ~~~
 sudo systemctl enable power_gpu
 ~~~
-Для тех кто хочет заморочиться с более глубой настройкой электропитания видеокарты ссылка на [ArchWiki](https://wiki.archlinux.org/title/AMDGPU).
+Теперь видеокарта не будет сбрасывать частоты. Для тех кто хочет заморочиться с более глубой настройкой электропитания видеокарты ссылка на [ArchWiki](https://wiki.archlinux.org/title/AMDGPU).
 ## Nvidia видеокарты:
 Для видеокарт Nvidia драйвера ставятся командой:
 ~~~
