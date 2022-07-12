@@ -57,7 +57,7 @@ pacman-key --lsign-key 3056513887B78AEB
 pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 ~~~
 
-Не забудь добавить нужные строчкуи в `/etc/pacman.conf`, то что нужно доваить:
+Не забудь добавить нужные строчкуи в `/etc/pacman.conf`, то что нужно добавить:
 ~~~
 [chaotic-aur]
 Include = /etc/pacman.d/chaotic-mirrorlist
@@ -127,6 +127,28 @@ git clone https://aur.archlinux.org/corectrl.git
 cd corectrl
 makepkg -sric
 ~~~
+>Что бы зафиксировать режим электропитания на "High" для видеокарт AMD рекомендую создать сервис, который в авторежиме при старте будет устанавливать правило питания на "High". Для этого создадим сервис:
+~~~
+sudo nano /etc/systemd/system/power_gpu.service
+~~~
+Далее прописываем в скрипт сервиса следующее:
+~~~
+[Unit] 
+Description=power_gpu 
+ 
+[Service] 
+Type=oneshot 
+ExecStart=/usr/bin/bash -c "echo high | sudo tee /sys/class/drm/card0/device/power_dpm_force_performance_level" 
+RemainAfterExit=yes 
+ 
+[Install] 
+WantedBy=multi-user.target
+~~~
+Теперь просто активируюем данный скрипт в системе следующей командой:
+~~~
+sudo systemctl enable power_gpu
+~~~
+Для тех кто хочет заморочиться с более глубой настройкой электропитания видеокарты ссылка на [ArchWiki](https://wiki.archlinux.org/title/AMDGPU).
 ## Nvidia видеокарты:
 Для видеокарт Nvidia драйвера ставятся командой:
 ~~~
@@ -354,7 +376,7 @@ mitigations=off noibrs nowatchdog preempt=none raid=noautodetect rootfstype=btrf
 
 + Для видоекарт AMD рекомендую так же добавить параметр маски указанный ниже, который нужен для модуля CoreCtrl, разблокирующий нам андервольтинг GPU, а так же на некоторых видеокартах позволит разгонять VRAM на которых небыло такой опции по задумке производителя, так же пофиксит вылеты системы на нестандартных (кастомных) прошивках видеокарты. 
 ~~~
-amdgpu.ppfeaturemask=0xfff7ffff
+amdgpu.ppfeaturemask=0xffffffff
 ~~~
 Далее произведём обновление параметры `GRUB` загрузчика системы командой:
 ~~~
